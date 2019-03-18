@@ -14,8 +14,8 @@ T0 = 288.15
 R = 287.058
 g0 = 9.80665        
 gamma = 1.4
-Ws = 60500.     
-F_used_lbs = [664.,694.,730.,755.,798.,825.,846.]
+Ws = 60500.
+F_used_lbs = [360.,412.,447.,478.,532.,570.]
 
 F_used_kg = []
 for i in F_used_lbs:
@@ -127,4 +127,19 @@ for i in Vt:
 Ve_bar = []
 for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i))
+    
+alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]
+    
+Cl = []
+for i in Ve_bar:
+    Cl.append(W[Ve_bar.index(i)]/(0.5*rho[Ve_bar.index(i)]*(i)**2*S))
 
+# =============================================================================
+# T = []
+# Cd = []
+# for i in Ve_bar:
+#     Cd.append(T[Ve_bar.index(i)]/(0.5*rho[Ve_bar.index(i)]*(i)**2*S))
+# =============================================================================
+    
+plt.plot(Cl,alpha)
+plt.show

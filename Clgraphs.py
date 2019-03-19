@@ -4,10 +4,13 @@ Created on Sun Mar 17 00:06:22 2019
 
 @author: Harold
 """
-
+from DataImport import *
 import math as m
 import matplotlib.pyplot as plt
-import PyThrust
+from PyThrust import *
+
+data = importData("Refdata.mat")
+data.printVariables()
 
 p0 = 101325.         
 rho0 = 1.225
@@ -130,10 +133,10 @@ Ve_bar = []
 for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i))
     
-t = []
+t = [1157., 1297., 1426., 1564., 1787., 1920]
 T = []
 for i in t:
-    T.append(thrust(i,matlab))
+    T.append(thrust(i,data))
 
     
 alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]

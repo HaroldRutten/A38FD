@@ -7,6 +7,8 @@ Created on Sun Mar 17 00:06:22 2019
 
 import math as m
 import matplotlib.pyplot as plt
+import PyThrust
+
 p0 = 101325.         
 rho0 = 1.225
 labda = -0.0065         
@@ -128,18 +130,24 @@ Ve_bar = []
 for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i))
     
+t = []
+T = []
+for i in t:
+    T.append(thrust(i,matlab))
+
+    
 alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]
     
 Cl = []
 for i in Ve_bar:
-    Cl.append(W[Ve_bar.index(i)]/(0.5*rho[Ve_bar.index(i)]*(i)**2*S))
+    Cl.append((W[Ve_bar.index(i)])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))
 
 # =============================================================================
-# T = []
+
 # Cd = []
 # for i in Ve_bar:
 #     Cd.append(T[Ve_bar.index(i)]/(0.5*rho[Ve_bar.index(i)]*(i)**2*S))
 # =============================================================================
     
-plt.plot(Cl,alpha)
+plt.plot(alpha,Cl)
 plt.show

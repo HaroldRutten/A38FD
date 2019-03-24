@@ -20,15 +20,23 @@ R = 287.058
 g0 = 9.80665        
 gamma = 1.4
 Ws = 60500.
-F_used_lbs = [360.,412.,447.,478.,532.,570.]
+S = 30. #m^2
 
+# EXCEL VARIABLES=============================================================================
+
+F_used_lbs = [360.,412.,447.,478.,532.,570.]
+hpft = [5010.,5020.,5020.,5030.,5020.,5110.]            #pressure height
+Vckts = [259.,221.,192.,163.,130.,118.] #calibrated speed in knots
+TATC = [12.5,10.5,8.8,7.2,6.0,5.2] 
+t = [1157., 1297., 1426., 1564., 1787., 1920]
+alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]
+
+# Conversions=============================================================================
 F_used_kg = []
 for i in F_used_lbs:
     a = i*0.453592
     F_used_kg.append(a)
-
-S = 30. #m^2
-
+    
 #==============================================================================
 # #     ================                  WEIGHTS =================                    ##
 # 
@@ -75,19 +83,19 @@ print(W)
 
 #==================================================================================================#
 #=========================
-hpft = [5010.,5020.,5020.,5030.,5020.,5110.]            #pressure height
+
 hp = []
 for i in hpft:
     a = i*0.3048
     hp.append(a)
-Vckts = [259.,221.,192.,163.,130.,118.] #calibrated speed in knots
+
 Vc = []
 for i in Vckts:
     a = i*0.514444
     Vc.append(a)
 print(Vc)
 
-TATC = [12.5,10.5,8.8,7.2,6.0,5.2] 
+
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
@@ -133,24 +141,30 @@ Ve_bar = []
 for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i))
     
-t = [1157., 1297., 1426., 1564., 1787., 1920]
-T = []
+
+Thrust = []
 for i in t:
-    T.append(thrust(i,data))
+    Thrust.append(thrust(i,data))
 
     
-alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]
+
     
 Cl = []
 for i in Ve_bar:
     Cl.append((W[Ve_bar.index(i)])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))
 
-# =============================================================================
+Cd = []
+for i in Ve_bar:
+    Cd.append((Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))
 
-# Cd = []
-# for i in Ve_bar:
-#     Cd.append(T[Ve_bar.index(i)]/(0.5*rho[Ve_bar.index(i)]*(i)**2*S))
-# =============================================================================
-    
+Cd2 = []
+for i in Cd:
+    Cd2.append(i**2)
+
+plt.figure(1)
+plt.subplot(211)
 plt.plot(alpha,Cl)
-plt.show
+
+plt.subplot(212)
+plt.plot(Cd2,Cl)
+plt.show()

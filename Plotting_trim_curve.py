@@ -1,6 +1,11 @@
-from PyThrust import *
+from DataImport import *
 import math as m
 import matplotlib.pyplot as plt
+from PyThrust import *
+
+data = importData("FTISxprt-20190319_100832.mat")
+data.printVariables()
+
 p0 = 101325.         
 rho0 = 1.225
 labda = -0.0065         
@@ -12,6 +17,8 @@ Ws = 60500.
 
 
 S = 30. #m^2
+
+t = [1905., 1975., 2037., 2100., 2207., 2278., 2345.]
 #==============================================================================
 # #     ================                  WEIGHTS =================                    ##
 # 
@@ -134,3 +141,7 @@ Tc = []
 for i in Ve_bar:
     Tc.append( Thrust[Ve_bar.index(i)] / (0.5 * rho * (Ve_bar**2) * S) )
 d_eq = d_eq_meas - (1./Cm_d)*Cm_Tc * (Tc_s - Tc)
+
+Thrust = []
+for i in t:
+    Thrust.append(thrust(i,data))

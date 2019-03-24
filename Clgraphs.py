@@ -9,7 +9,7 @@ import math as m
 import matplotlib.pyplot as plt
 from PyThrust import *
 
-data = importData("Refdata.mat")
+data = importData("FTISxprt-20190319_100832.mat")
 data.printVariables()
 
 p0 = 101325.         
@@ -24,12 +24,12 @@ S = 30. #m^2
 
 # EXCEL VARIABLES=============================================================================
 
-F_used_lbs = [360.,412.,447.,478.,532.,570.]
-hpft = [5010.,5020.,5020.,5030.,5020.,5110.]            #pressure height
-Vckts = [259.,221.,192.,163.,130.,118.] #calibrated speed in knots
-TATC = [12.5,10.5,8.8,7.2,6.0,5.2] 
-t = [1157., 1297., 1426., 1564., 1787., 1920]
-alpha = [1.7, 2.4, 3.6, 5.4, 8.7, 10.6]
+F_used_lbs = [360.,400.,435.,466.,503.,530.]
+hpft = [10500.,10500.,10500.,10500.,10500.,10550.]            #pressure height
+Vckts = [250.,220.,192.,157.,130.,114.] #calibrated speed in knots
+TATC = [0,-3.2,-5.2,-8,-9.2,-9.8] 
+t = [990., 1105., 1232., 1370., 1533., 1664.]
+alpha = [1.4, 2.1, 3.1, 5.1, 8.3, 10.9]
 
 # Conversions=============================================================================
 F_used_kg = []
@@ -146,9 +146,7 @@ Thrust = []
 for i in t:
     Thrust.append(thrust(i,data))
 
-    
 
-    
 Cl = []
 for i in Ve_bar:
     Cl.append((W[Ve_bar.index(i)])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))

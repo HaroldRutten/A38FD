@@ -29,7 +29,7 @@ def thrust(t, data):
 	thrust.exe file.
 	'''
 	
-	index = list(data.values[47]).index(t)
+	index = list(data.values[48]).index(t)
 	
 	file = open('matlab.dat', 'w')
 	file.write(str(data.values[36][index]*0.3048))

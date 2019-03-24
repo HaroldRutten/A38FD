@@ -42,7 +42,7 @@ Wp_kg = sum(Payload) #kg
 
 #============================FUEL==================================================
 
-F_used_lbs = [881.,910.]
+F_used_lbs = [717.,739.]
 
 F_used_kg = []
 for i in F_used_lbs:
@@ -60,26 +60,26 @@ for i in F_used_kg:
 # =============================================================================
 #     
 # ===================================EXCEL VARIABLES==========================================
-Fe_aer_excl = [0.,-23.,-29.,-46.,26.,40.,83.]
-t = [2239., 2351., 2484., 2576., 2840., 2920.]
+Fe_aer_excl = [1.,-31.]
+t = [2422.,2507.]
 
-hpft = [5730.,5790.]            #pressure height
+hpft = [9630.,9690.]            #pressure height
 hp = []
 for i in hpft:
     a = i*0.3048
     hp.append(a)
-Vckts = [161.,161.] #calibrated speed in knots
+Vckts = [160.,159.] #calibrated speed in knots
 Vc = []
 for i in Vckts:
     a = i*0.514444
     Vc.append(a)
-print(Vc)
 
-TATC = [5.0,5.0] 
+
+TATC = [-6.,-0.8] 
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
-print("Tm =",Tm)
+
 
 
 p = []

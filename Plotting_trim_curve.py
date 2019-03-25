@@ -65,6 +65,7 @@ for i in F_used_kg:
 # =============================================================================
 #     
 # ===================================EXCEL VARIABLES==========================================
+aoa = [5.,5.9,6.9,7.9,4.2,3.6,3.4]
 de_eq_meas = [-0.02,-0.7,-1.1,-1.7,0.2,0.4,0.7]
 Fe_aer_excl = [1.,-19.,-30.,-46.,25.,48.,80.]
 hpft = [10500.,10640.,10750.,10930.,10040.,9740.,9250.]            #pressure height
@@ -140,7 +141,7 @@ Fe_aer = []
 for i in Fe_aer_excl:
     Fe_aer.append(i * (Ws/W[Fe_aer_excl.index(i)])) #Getting from Fe_aer to Fe*_aer 
 #Elaborate why Fe_f = 0 in report
-plt.plot(sorted(Ve_bar),sorted(Fe_aer))
+
 plt.show
 
 Thrust = []
@@ -148,12 +149,23 @@ for i in t:
     Thrust.append(thrust(i,data))
 Tc = []
 for i in Ve_bar:
-    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * (d**2) )
+    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * (d**2) ))
 Tcs = []
 for i in Ts:
-    Tcs.append(i/(0.5*rho[Tc_s.index(i)] * (Ve_bar[Tc_s.index(i)]**2)*(d**2)))
+    Tcs.append(i/(0.5*rho[Ts.index(i)] * (Ve_bar[Ts.index(i)]**2)*(d**2)))
 
 
 d_eq = []
-for i in Tc_s:
-    d_eq.append(d_eq_meas[Tc_s.index(i)] - (1./Cm_d[Tc_s.index(i)])*Cm_Tc * (i - Tc[Tc_s.index(i)]))
+for i in Tcs:
+    d_eq.append(de_eq_meas[Tcs.index(i)] - (1./Cm_d[Tcs.index(i)])*Cm_Tc * (i - Tc[Tcs.index(i)]))
+    
+plt.figure(1)
+plt.subplot(311)
+plt.plot(sorted(Ve_bar),sorted(Fe_aer))
+plt.subplot(312)
+plt.plot(sorted(Ve_bar),sorted(d_eq))
+plt.subplot(313)
+plt.plot(sorted(aoa),sorted(d_eq))
+plt.show()
+print(sorted(d_eq))
+print(sorted(aoa))

@@ -66,9 +66,9 @@ for i in F_used_kg:
 #     
 # ===================================EXCEL VARIABLES==========================================
 aoa_deg = [5.,5.9,6.9,7.9,4.2,3.6,3.4]
-aoa = []
+aoarad = []
 for i in aoa_deg:
-    aoa.append(m.radians(i))
+    aoarad.append(m.radians(i))
 de_eq_meas = [-0.02,-0.7,-1.1,-1.7,0.2,0.4,0.7]
 Fe_aer_excl = [1.,-19.,-30.,-46.,25.,48.,80.]
 hpft = [10500.,10640.,10750.,10930.,10040.,9740.,9250.]            #pressure height
@@ -160,7 +160,16 @@ for i in Ts:
 d_eq = []
 for i in Tcs:
     d_eq.append(m.radians(de_eq_meas[Tcs.index(i)]) - (1./(-1.0048670419630457))*Cm_Tc * (i - Tc[Tcs.index(i)]))
+dy = min(d_eq) - max(d_eq)
+dx = max(aoarad)-min(aoarad)
+dde_dalpha = dy/dx
 
+Cm_alpha = dde_dalpha*(--0.8655218895391688)
+
+
+aoa = []
+for a in aoarad:
+    aoa.append((a*180)/(m.pi))
 plt.figure(1)
 #plt.subplot(311)
 plt.plot(sorted(Ve_bar),sorted(Fe_aer),"go")
@@ -186,10 +195,4 @@ plt.ylabel("Elevator deflection angle [rad]")
 plt.figure("Elevator deflection vs. angle of attack")
 plt.show()
 
-
-dy = min(d_eq) - max(d_eq)
-dx = max(aoa)-min(aoa)
-dde_dalpha = dy/dx
-
-Cm_alpha = dde_dalpha*(--0.8655218895391688)
 

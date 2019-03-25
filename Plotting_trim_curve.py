@@ -65,7 +65,10 @@ for i in F_used_kg:
 # =============================================================================
 #     
 # ===================================EXCEL VARIABLES==========================================
-aoa = [5.,5.9,6.9,7.9,4.2,3.6,3.4]
+aoa_deg = [5.,5.9,6.9,7.9,4.2,3.6,3.4]
+aoa = []
+for i in aoa_deg:
+    aoa.append(m.radians(i))
 de_eq_meas = [-0.02,-0.7,-1.1,-1.7,0.2,0.4,0.7]
 Fe_aer_excl = [1.,-19.,-30.,-46.,25.,48.,80.]
 hpft = [10500.,10640.,10750.,10930.,10040.,9740.,9250.]            #pressure height
@@ -126,9 +129,8 @@ for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i)) 
     
     
-dx_cg_inch = (134.-288.)  #center of gravity shift
-dx_cg = dx_cg_inch*0.0254
-dd_e = ((-0.8) - (-0.2) )      #change in deflection elevator
+dx_cg = -0.0308464425
+dd_e = ((-0.8- (- 0.2) ) *m.pi )/180  #change in deflection elevator
 Cn = []
 for i in W:
     Cn.append(i/(0.5*rho[W.index(i)]*(Ve_bar[W.index(i)]**2)*S ))
@@ -157,7 +159,7 @@ for i in Ts:
 
 d_eq = []
 for i in Tcs:
-    d_eq.append(de_eq_meas[Tcs.index(i)] - (1./Cm_d[Tcs.index(i)])*Cm_Tc * (i - Tc[Tcs.index(i)]))
+    d_eq.append(m.radians(de_eq_meas[Tcs.index(i)]) - (1./(-1.0048670419630457))*Cm_Tc * (i - Tc[Tcs.index(i)]))
 
 plt.figure(1)
 plt.subplot(311)
@@ -172,4 +174,6 @@ plt.show()
 dy = min(d_eq) - max(d_eq)
 dx = max(aoa)-min(aoa)
 dde_dalpha = dy/dx
+
+Cm_alpha = dde_dalpha*(--1.00486704196)
 

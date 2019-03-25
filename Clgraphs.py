@@ -150,7 +150,7 @@ for i in t:
 
 Cl = []
 for i in Ve_bar:
-    Cl.append((W[Ve_bar.index(i)])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))
+    Cl.append((W[Ve_bar.index(i)])/(0.5*rho[Ve_bar.index(i)]*(i**2)*S))
 
 Cd = []
 for i in Ve_bar:
@@ -165,5 +165,5 @@ plt.subplot(211)
 plt.plot(alpha,Cl)
 
 plt.subplot(212)
-plt.plot(Cd,Cl2)
+plt.plot(Cl2,Cd)
 plt.show()

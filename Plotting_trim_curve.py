@@ -91,6 +91,7 @@ for i in p:
     a = m.sqrt((2/(gamma-1)) * ((1+(p0/i)*((1+((gamma-1)/(2*gamma))*(rho0/p0)* Vc[p.index(i)]**2)**(gamma/(gamma-1))-1))**((gamma-1)/gamma)-1))
     M.append(a)
 
+
 T = []
 for i in Tm:
     a = i/(1+((gamma-1)/2)*M[Tm.index(i)]**2)

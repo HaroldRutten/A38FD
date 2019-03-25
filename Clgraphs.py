@@ -116,7 +116,7 @@ for i in p:
 
 T = []
 for i in Tm:
-    a = i/(1+((gamma-1)/2)*M[Tm.index(i)]**2)
+    a = i/(1+((gamma-1)/2)*(M[Tm.index(i)]**2)
     T.append(a)
     
 a = []

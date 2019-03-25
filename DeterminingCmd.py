@@ -79,9 +79,6 @@ TATC = [-6.,-0.8]
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
-
-
-
 p = []
 for i in hp:
     a = p0*(1+((labda*i)/T0))**(-g0/(labda*R))

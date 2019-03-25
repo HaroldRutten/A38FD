@@ -26,7 +26,7 @@ pas = sum(passengers)
 plw = pas+np+cp
 
 #--- moment arms---#
-seatloc = [131,131,170,214,214,251,251,288,288] 
+seatloc = [131,131,170,214,214,251,251,288,150] 
 for i in range(len(seatloc)):
     seatloc[i] = seatloc[i]*0.0254
 xnp = 74*0.0254

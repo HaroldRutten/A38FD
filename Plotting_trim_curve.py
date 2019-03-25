@@ -43,7 +43,7 @@ Wp_kg = sum(Payload) #kg
 
 #============================FUEL==================================================
 
-F_used_lbs = [881.,910.]
+F_used_lbs = [592.,613.,624.,638.,665.,679.,699.]
 
 F_used_kg = []
 for i in F_used_lbs:
@@ -61,20 +61,20 @@ for i in F_used_kg:
 # =============================================================================
 #     
 # ===================================EXCEL VARIABLES==========================================
-Fe_aer_excl = [0.,-23.,-29.,-46.,26.,40.,83.]
-hpft = [5730.,5790.]            #pressure height
+Fe_aer_excl = [1.,-19.,-30.,-46.,25.,48.,80.]
+hpft = [10500.,10640.,10750.,10930.,10040.,9740.,9250.]            #pressure height
 hp = []
 for i in hpft:
     a = i*0.3048
     hp.append(a)
-Vckts = [161.,161.] #calibrated speed in knots
+Vckts = [159.,149.,141.,130.,170.,180.,189.] #calibrated speed in knots
 Vc = []
 for i in Vckts:
     a = i*0.514444
     Vc.append(a)
 print(Vc)
 
-TATC = [5.0,5.0] 
+TATC = [-6.8,-7.5,-7.8,-8.2,-5.5,-4.8,-4.] 
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
@@ -121,7 +121,7 @@ for i in W:
     
 dx_cg_inch = (134.-288.)  #center of gravity shift
 dx_cg = dx_cg_inch*0.0254
-dd_e = (-0.5-0.)      #change in deflection elevator
+dd_e = ((-0.8) - (-0.2) )      #change in deflection elevator
 Cn = []
 for i in W:
     Cn.append(i/(0.5*rho[W.index(i)]*(Ve_bar[W.index(i)]**2)*S ))
@@ -132,16 +132,16 @@ for i in Cn:
     Cm_d.append(a)
 Fe_aer = []
 for i in Fe_aer_excl:
-    Fe_aer.append(i * (Ws/W)) #Getting from Fe_aer to Fe*_aer 
+    Fe_aer.append(i * (Ws/W[Fe_aer_excl.index(i)])) #Getting from Fe_aer to Fe*_aer 
 #Elaborate why Fe_f = 0 in report
-
-plt.plot(Ve_bar,Fe_aer)
+plt.plot(sorted(Ve_bar),sorted(Fe_aer))
 plt.show
-Tc = []
-for i in Ve_bar:
-    Tc.append( Thrust[Ve_bar.index(i)] / (0.5 * rho * (Ve_bar**2) * S) )
-d_eq = d_eq_meas - (1./Cm_d)*Cm_Tc * (Tc_s - Tc)
 
 Thrust = []
 for i in t:
     Thrust.append(thrust(i,data))
+Tc = []
+for i in Ve_bar:
+    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * S) )
+
+#d_eq = d_eq_meas - (1./Cm_d)*Cm_Tc * (Tc_s - Tc)

@@ -157,13 +157,18 @@ for i in Cl:
     Cl2.append(i**2)
 
 plt.figure(1)
-plt.subplot(211)
+#plt.subplot(211)
 plt.plot(alpha,Cl)
 
-plt.subplot(212)
+plt.figure(2)
+#plt.subplot(212)
 plt.plot(Cl2,Cd)
 plt.show()
 
+plt.figure(3)
+#plt.subplot(212)
+plt.plot(alpha,Cd)
+plt.show()
 # =============================================================================
 # dy = max(Cd) - min(Cd)
 # dx = max(Cl2)-min(Cl2)

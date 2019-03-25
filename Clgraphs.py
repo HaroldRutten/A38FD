@@ -165,5 +165,16 @@ plt.subplot(211)
 plt.plot(alpha,Cl)
 
 plt.subplot(212)
-plt.plot(Cd,Cl2)
+plt.plot(Cl2,Cd)
 plt.show()
+
+# =============================================================================
+# dy = max(Cd) - min(Cd)
+# dx = max(Cl2)-min(Cl2)
+# slope = dy/dx
+# =============================================================================
+dy = []
+dx = []
+for i in range(len(Cd)-1):
+    dy.append( Cd[i+1]-Cd[i])
+    dx.append( Cl2[i+1]-Cl2[i])

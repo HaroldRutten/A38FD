@@ -110,8 +110,8 @@ for i in hp:
     p.append(a)
 
 M = []
-for i in p:
-    a = m.sqrt((2/(gamma-1)) * ((1+(p0/i)*((1+((gamma-1)/(2*gamma))*(rho0/p0)* Vc[p.index(i)]**2)**(gamma/(gamma-1))-1))**((gamma-1)/gamma)-1))
+for i in Vc:
+    a = m.sqrt((2/(gamma-1)) * ((1+(p0/p[Vc.index(i)])*((1+((gamma-1)/(2*gamma))*(rho0/p0)* i**2)**(gamma/(gamma-1))-1))**((gamma-1)/gamma)-1))
     M.append(a)
 
 T = []

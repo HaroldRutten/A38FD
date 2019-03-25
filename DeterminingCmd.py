@@ -117,9 +117,9 @@ for i in W:
     Ve_bar.append(Ve[W.index(i)]*m.sqrt(Ws/i)) 
     
     
-dx_cg_inch = (134.-288.)  #center of gravity shift
+dx_cg_inch = (150-288.)  #center of gravity shift
 dx_cg = dx_cg_inch*0.0254
-dd_e = (-0.5-0.)      #change in deflection elevator
+dd_e = ((-0.8- (- 0.2) ) *m.pi) /180   #change in deflection elevator
 Cn = []
 for i in W:
     Cn.append(i/(0.5*rho[W.index(i)]*(Ve_bar[W.index(i)]**2)*S ))

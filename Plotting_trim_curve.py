@@ -5,7 +5,8 @@ from PyThrust import *
 
 data = importData("FTISxprt-20190319_100832.mat")
 data.printVariables()
-
+d = 0.686 #diameter JT15D-4 engine in m
+Cm_Tc = -0.0064
 p0 = 101325.         
 rho0 = 1.225
 labda = -0.0065         
@@ -14,8 +15,11 @@ R = 287.058
 g0 = 9.80665        
 gamma = 1.4
 Ws = 60500.     
-
-
+Ts_per_engine = [(2021.01, 2339.69),(2066.55, 2366.19),(2080.34, 2400.34),(2142.15, 2462.07),(1979.23, 2291.18),(1964.18, 2278.94),(1920.19, 2236.73)]
+Ts = []
+for i in Ts_per_engine:
+    Ts.append(sum(i))
+    
 S = 30. #m^2
 
 t = [1905., 1975., 2037., 2100., 2207., 2278., 2345.]
@@ -61,6 +65,7 @@ for i in F_used_kg:
 # =============================================================================
 #     
 # ===================================EXCEL VARIABLES==========================================
+de_eq_meas = [-0.02,-0.7,-1.1,-1.7,0.2,0.4,0.7]
 Fe_aer_excl = [1.,-19.,-30.,-46.,25.,48.,80.]
 hpft = [10500.,10640.,10750.,10930.,10040.,9740.,9250.]            #pressure height
 hp = []
@@ -143,6 +148,12 @@ for i in t:
     Thrust.append(thrust(i,data))
 Tc = []
 for i in Ve_bar:
-    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * S) )
+    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * (d**2) )
+Tcs = []
+for i in Ts:
+    Tcs.append(i/(0.5*rho[Tc_s.index(i)] * (Ve_bar[Tc_s.index(i)]**2)*(d**2)))
 
-#d_eq = d_eq_meas - (1./Cm_d)*Cm_Tc * (Tc_s - Tc)
+
+d_eq = []
+for i in Tc_s:
+    d_eq.append(d_eq_meas[Tc_s.index(i)] - (1./Cm_d[Tc_s.index(i)])*Cm_Tc * (i - Tc[Tc_s.index(i)]))

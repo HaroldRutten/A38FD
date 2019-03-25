@@ -175,5 +175,5 @@ dy = min(d_eq) - max(d_eq)
 dx = max(aoa)-min(aoa)
 dde_dalpha = dy/dx
 
-Cm_alpha = dde_dalpha*(--1.00486704196)
+Cm_alpha = dde_dalpha*(--0.865521889539)
 

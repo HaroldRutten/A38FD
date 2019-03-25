@@ -48,15 +48,15 @@ Wempty = Wempty_kg * g0
 # 
 #============================PAYLOAD==================================================
 
-pilot1 = 95. #kg
-pilot2 = 92.
-coordinator = 74.
-observer_1L = 66.
-observer_1R = 61.
-observer_2L = 75.
-observer_2R = 78.
-observer_3L = 86.
-observer_3R = 68.
+pilot1 = 93. #kg
+pilot2 = 89.
+coordinator = 140.
+observer_1L = 75.
+observer_1R = 85.
+observer_2L = 74.5
+observer_2R = 75.
+observer_3L = 83.
+observer_3R = 90.5
 Payload = [pilot1,pilot2,coordinator,observer_1L, observer_1R,observer_2L,observer_2R,observer_3L,observer_3R]
 Wp_kg = sum(Payload) #kg
 
@@ -64,7 +64,7 @@ Wp_kg = sum(Payload) #kg
 
 
 
-block = 4050.*0.453592 #kg
+block = 2800*0.453592 #kg
 Wfuel_kg =[]
 for i in F_used_kg:
     Wfuel_kg.append(block - i)
@@ -102,8 +102,6 @@ for i in TATC:
     Tm.append(i+273.15)
 print("Tm =",Tm)
 
-F_used_lbs = 360.
-F_used_kg = F_used_lbs * 0.453592
 
 p = []
 for i in hp:

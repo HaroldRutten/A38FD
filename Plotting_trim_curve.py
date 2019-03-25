@@ -158,14 +158,18 @@ for i in Ts:
 d_eq = []
 for i in Tcs:
     d_eq.append(de_eq_meas[Tcs.index(i)] - (1./Cm_d[Tcs.index(i)])*Cm_Tc * (i - Tc[Tcs.index(i)]))
-    
+
 plt.figure(1)
 plt.subplot(311)
 plt.plot(sorted(Ve_bar),sorted(Fe_aer))
 plt.subplot(312)
 plt.plot(sorted(Ve_bar),sorted(d_eq))
 plt.subplot(313)
-plt.plot(sorted(aoa),sorted(d_eq))
+plt.plot(sorted(aoa),sorted(d_eq)[::-1])
 plt.show()
-print(sorted(d_eq))
-print(sorted(aoa))
+
+
+dy = min(d_eq) - max(d_eq)
+dx = max(aoa)-min(aoa)
+dde_dalpha = dy/dx
+

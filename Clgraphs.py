@@ -165,5 +165,5 @@ plt.subplot(211)
 plt.plot(alpha,Cl)
 
 plt.subplot(212)
-plt.plot(Cl2,Cd)
+plt.plot(Cd,Cl2)
 plt.show()

@@ -87,7 +87,6 @@ TATC = [-6.8,-7.5,-7.8,-8.2,-5.5,-4.8,-4.]
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
-print("Tm =",Tm)
 
 
 p = []
@@ -159,7 +158,7 @@ for i in Ts:
 
 d_eq = []
 for i in Tcs:
-    d_eq.append(m.radians(de_eq_meas[Tcs.index(i)]) - (1./(-1.0048670419630457))*Cm_Tc * (i - Tc[Tcs.index(i)]))
+    d_eq.append(m.radians(de_eq_meas[Tcs.index(i)]) - (1./(-0.8655218895391688))*Cm_Tc * (i - Tc[Tcs.index(i)]))
 dy = min(d_eq) - max(d_eq)
 dx = max(aoarad)-min(aoarad)
 dde_dalpha = dy/dx

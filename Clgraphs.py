@@ -160,7 +160,7 @@ plt.figure(1)
 #plt.subplot(211)
 plt.plot(alpha,Cl,"go")
 plt.plot(alpha,Cl,"g")
-plt.xlabel("Angle of attack [degrees]")
+plt.xlabel("Angle of attack [deg]")
 plt.ylabel("Lift Coefficient")
 plt.title("Lift Coefficient vs. Angle of Attack")
 plt.show()
@@ -178,7 +178,7 @@ plt.figure(3)
 #plt.subplot(212)
 plt.plot(alpha,Cd,"bo")
 plt.plot(alpha,Cd,"b")
-plt.xlabel("Angle of attack [degrees]")
+plt.xlabel("Angle of attack [deg]")
 plt.ylabel("Drag Coefficient")
 plt.title("Drag Coefficient vs. Angle of Attack")
 plt.show()
@@ -187,10 +187,18 @@ plt.show()
 # dx = max(Cl2)-min(Cl2)
 # slope = dy/dx
 # =============================================================================
-dy = []
-dx = []
+
+dy = max(Cd) - min(Cd)
+dx = max(Cl2) - min(Cl2)
+slope = dy/dx
+
+dyy = max(Cl) - min(Cl)
+dxx = max(alpha) - min(alpha)
+dCl_dalpha = dyy/dxx
+
 #for i in range(len(Cd)-1):
 #==============================================================================
+
 # for i in Cd:
 #     if i == 5:
 #         
@@ -213,9 +221,7 @@ dx = []
 # avg = sum(slopes)/len(slopes)
 # 
 #==============================================================================
-dyy = max(Cd) - min(Cd)
-dxx = max(Cl2) - min(Cl2)
-slopee = dyy/dxx
+
 
 
     

@@ -148,7 +148,7 @@ for i in t:
     Thrust.append(thrust(i,data))
 Tc = []
 for i in Ve_bar:
-    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * (d**2) )
+    Tc.append( (Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1]) / (0.5 * rho[Ve_bar.index(i)] * (i**2) * (d**2) ))
 Tcs = []
 for i in Ts:
     Tcs.append(i/(0.5*rho[Tc_s.index(i)] * (Ve_bar[Tc_s.index(i)]**2)*(d**2)))

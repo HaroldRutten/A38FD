@@ -100,8 +100,6 @@ print(Vc)
 Tm = []
 for i in TATC:
     Tm.append(i+273.15)
-print("Tm =",Tm)
-
 
 p = []
 for i in hp:
@@ -173,6 +171,33 @@ plt.show()
 # =============================================================================
 dy = []
 dx = []
-for i in range(len(Cd)-1):
-    dy.append( Cd[i+1]-Cd[i])
-    dx.append( Cl2[i+1]-Cl2[i])
+#for i in range(len(Cd)-1):
+#==============================================================================
+# for i in Cd:
+#     if i == 5:
+#         
+#     else:        
+#         dy.append( Cd[Cd.index(i)+1]-Cd[Cd.index(i)])
+#     dx.append( Cl2[Cd.index(i)+1]-Cl2[Cd.index(i)])
+# 
+#==============================================================================
+
+#==============================================================================
+# for i in Cd:
+#     if Cd.index(i) <5:
+#         dy.append(Cd[Cd.index(i)+1] - Cd[Cd.index(i)])
+#         dx.append(Cl2[Cd.index(i)+1] - Cl2[Cd.index(i)])
+#     else: 
+#         break
+# slopes = []
+# for i in dy:
+#     slopes.append(i/(dx[dy.index(i)]))
+# avg = sum(slopes)/len(slopes)
+# 
+#==============================================================================
+dyy = max(Cd) - min(Cd)
+dxx = max(Cl2) - min(Cl2)
+slopee = dyy/dxx
+
+
+    

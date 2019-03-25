@@ -26,7 +26,7 @@ pas = sum(passengers)
 plw = pas+np+cp
 
 #--- moment arms---#
-seatloc = [131,131,170,214,214,251,251,288,288] 
+seatloc = [131,131,170,214,214,251,251,288,150] 
 for i in range(len(seatloc)):
     seatloc[i] = seatloc[i]*0.0254
 xnp = 74*0.0254
@@ -34,7 +34,7 @@ xcp = 321*0.0254
 ### -- payload moments ---##
 payloadmom = []
 for i in range(npax+1):
-    print(i)
+    #print(i)
     if i == 9:
         m = xnp*np
     elif i == 10:
@@ -75,14 +75,14 @@ print('current fuel mass in pounds is', fatmpounds)
 fuelmoment = float(input('enter current fuel moment from table'))
 xcgfuel = fuelmoment/fatmpounds
 
-fuelmoment = fuelmoment*.453593/0.0254
+fuelmoment = fuelmoment*.453592/0.0254
 # --- total balance --- #
 #print(bemm)
 #print(fuelmoment)
 #print(plm)
 moment = bemm+plm+fuelmoment
 mass = fatm+bem+plw
-xcg = moment/(mass*9.81)
+xcg = moment/(mass*9.80665)
 
 print('the moment is ', moment,'n/m')
 print('the mass is ', mass,' kg')

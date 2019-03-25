@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from PyThrust import *
 
 data = importData("FTISxprt-20190319_100832.mat")
+#data = importData("Refdata.mat")
 data.printVariables()
 
 p0 = 101325.         
@@ -116,7 +117,7 @@ for i in Vc:
 
 T = []
 for i in Tm:
-    a = i/(1+((gamma-1)/2)*(M[Tm.index(i)]**2)
+    a = i/(1+((gamma-1)/2)*M[Tm.index(i)]**2)
     T.append(a)
     
 a = []
@@ -155,14 +156,14 @@ Cd = []
 for i in Ve_bar:
     Cd.append((Thrust[Ve_bar.index(i)][0] + Thrust[Ve_bar.index(i)][1])/(0.5*rho[Ve_bar.index(i)]*((i)**2)*S))
 
-Cd2 = []
-for i in Cd:
-    Cd2.append(i**2)
+Cl2 = []
+for i in Cl:
+    Cl2.append(i**2)
 
 plt.figure(1)
 plt.subplot(211)
 plt.plot(alpha,Cl)
 
 plt.subplot(212)
-plt.plot(Cd2,Cl)
+plt.plot(Cd,Cl2)
 plt.show()

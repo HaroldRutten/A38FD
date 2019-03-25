@@ -190,9 +190,9 @@ plt.show()
 plt.figure(3)
 plt.plot(sorted(aoa),sorted(d_eq)[::-1],"o")
 plt.plot(sorted(aoa),sorted(d_eq)[::-1],"b")
-plt.xlabel("Angle of attack [degrees]")
+plt.xlabel("Angle of attack [deg]")
 plt.ylabel("Elevator deflection angle [rad]")
-plt.figure("Elevator deflection vs. angle of attack")
+plt.title("Elevator deflection vs. angle of attack")
 plt.show()
 
 

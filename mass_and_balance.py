@@ -27,7 +27,7 @@ pas = sum(passengers)
 plw = pas+np+cp
 
 #--- moment arms---#
-seatloc = [131,131,214,214,251,251,288,288,170] 
+seatloc = [131,131,214,214,251,251,288,150,170] 
 for i in range(len(seatloc)):
     seatloc[i] = seatloc[i]*0.0254
 
@@ -84,7 +84,7 @@ print('current fuel mass in pounds is', fatmpounds)
 fuelmoment = float(input('enter current fuel moment from table'))
 xcgfuel = fuelmoment/fatmpounds
 
-fuelmoment = fuelmoment*0.113*100
+fuelmoment = fuelmoment*0.11298*100
 # --- total balance --- #
 #print(bemm)
 #print(fuelmoment)

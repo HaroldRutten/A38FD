@@ -118,7 +118,7 @@ for i in W:
     
     
 
-dx_cg = -0.04303655
+dx_cg = -0.0531746658
 dd_e = ((-0.8- (- 0.2) ) *m.pi )/180  #change in deflection elevator
 Cn = []
 for i in W:

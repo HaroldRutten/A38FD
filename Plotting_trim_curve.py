@@ -155,7 +155,7 @@ Tcs = []
 for i in Ts:
     Tcs.append(i/(0.5*rho[Ts.index(i)] * (Ve_bar[Ts.index(i)]**2)*(d**2)))
 
-Cm_d = -1.2487795786780629
+Cm_d = -1.5429544597341283
 d_eq = []
 for i in Tcs:
     d_eq.append(m.radians(de_eq_meas[Tcs.index(i)]) - (1./(Cm_d))*Cm_Tc * (i - Tc[Tcs.index(i)]))

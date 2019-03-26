@@ -39,7 +39,7 @@ observer_3L = 83.
 observer_3R = 90.5
 Payload = [pilot1,pilot2,coordinator,observer_1L, observer_1R,observer_2L,observer_2R,observer_3L,observer_3R]
 Wp_kg = sum(Payload) #kg
-
+Wp_kg = 904.79
 #============================FUEL==================================================
 
 F_used_lbs = [717.,739.]
@@ -118,7 +118,7 @@ for i in W:
     
     
 
-dx_cg = -0.0308464425
+dx_cg = -0.04303655
 dd_e = ((-0.8- (- 0.2) ) *m.pi )/180  #change in deflection elevator
 Cn = []
 for i in W:

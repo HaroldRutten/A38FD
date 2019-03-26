@@ -128,8 +128,8 @@ for i in a:
     Vt.append(b)
 
 rho = []
-for i in p:
-    rho.append(i/(R*T[p.index(i)]))
+for i in range(len(p)):
+    rho.append(p[i]/(R*T[i]))
 
 Ve = []
 for i in Vt:
@@ -198,7 +198,20 @@ dxx = max(alpha) - min(alpha)
 dCl_dalpha = dyy/dxx
 
 e = (1/slope)/(AR*m.pi)
-CD_0 = Cd[4] - Cl2[4]*slope
+CD_0 = np.average(Cd[:] - Cl2[:]*slope) 
+CdC = []
+for i in Cl:
+    CdC.append(CD_0 + (i**2)/(m.pi*S*e))
+    
+plt.figure(4)
+plt.plot(Cd,Cl,"mo", label="Measured Cd")
+plt.plot(Cd,Cl,"m")
+plt.plot(CdC,Cl,"ko", label="Linearized Cd")
+plt.plot(CdC,Cl,"k")
+plt.xlabel("Drag Coefficient")
+plt.ylabel("Lift Coefficient")
+plt.title("Drag Polar")
+plt.show()
 #for i in range(len(Cd)-1):
 #==============================================================================
 

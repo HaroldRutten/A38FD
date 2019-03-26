@@ -116,8 +116,8 @@ for i in a:
     Vt.append(b)
 
 rho = []
-for i in p:
-    rho.append(i/(R*T[p.index(i)]))
+for i in range(len(p)):
+    rho.append(p[i]/(R*T[i]))
 
 Ve = []
 for i in Vt:

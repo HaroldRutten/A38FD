@@ -6,9 +6,10 @@ t = 0
 ff = 0.5
 f0 = 2800.*.453592
 bem = 9165.*.453592
+
 npax = 10
 fuelmom0 = 14320.34
-
+#7984.34 pounds-inch
 
 #--------payload-----------#
 
@@ -26,11 +27,14 @@ pas = sum(passengers)
 plw = pas+np+cp
 
 #--- moment arms---#
-seatloc = [131,131,214,214,251,251,288,150,170] 
+seatloc = [131,131,214,214,251,251,288,288,170] 
 for i in range(len(seatloc)):
     seatloc[i] = seatloc[i]*0.0254
+
 xnp = 74*0.0254
 xcp = 321*0.0254
+xcp2 = 338*0.0254
+
 ### -- payload moments ---##
 payloadmom = []
 for i in range(npax+1):
@@ -47,10 +51,13 @@ for i in range(npax+1):
     print(payloadmom)
 ##total payload moment####
 plm = sum(payloadmom)
+print(plm)
+print(plw)
 #print('payloadmom',plm)
 #print('payload weight',plw)
 ## acting at ##
 xpl = plm/(plw*9.80665)
+print(xpl)
 #print('payload cg',xpl)
   
 #----------BEM ------#
@@ -60,7 +67,8 @@ xcgbem = 7.421372
 bemm = xcgbem*bem*9.80665
 
 # -------ZFM ---------#
-
+print('zfm====', bem+plw)
+xcgzfm = (bemm+plm)/((bem+plw)*9.80665)
 print('zero fuel moment xcg',xcgzfm)
 # ------ fuel weight ----#
 
@@ -69,14 +77,14 @@ fused = float(input('fuel used:'))
 fatm = f0 - fused*.453592
 
 fatmpounds = fatm/.453592
-print(fatmpounds)
+
 xcgfuel0 = fuelmom0/f0
 
 print('current fuel mass in pounds is', fatmpounds)
 fuelmoment = float(input('enter current fuel moment from table'))
 xcgfuel = fuelmoment/fatmpounds
-print(xcgfuel)
-fuelmoment = fuelmoment*.11298
+
+fuelmoment = fuelmoment*0.113*100
 # --- total balance --- #
 #print(bemm)
 #print(fuelmoment)
@@ -85,6 +93,8 @@ moment = bemm+plm+fuelmoment
 mass = fatm+bem+plw
 xcg = moment/(mass*9.80665)
 
+print(bem, 'is the basic empty mass')
+print()
 print('the moment is ', moment,'n/m')
 print('the mass is ', mass,' kg')
 print('the center-of-gravity is located at', xcg,' m')

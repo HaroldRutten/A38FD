@@ -157,13 +157,18 @@ Cl2 = []
 for i in Cl:
     Cl2.append(i**2)
 
+Reynolds = []
+for i in range(len(rho)):
+    Reynolds.append((rho[i]*Ve_bar[i]*2.0569)/(1.81*10.**(-5.)))
+
 plt.figure(1)
 #plt.subplot(211)
 plt.plot(alpha,Cl,"go")
 plt.plot(alpha,Cl,"g")
 plt.xlabel("Angle of attack [deg]")
 plt.ylabel("Lift Coefficient")
-plt.title("Lift Coefficient vs. Angle of Attack")
+plt.suptitle("Lift Coefficient vs. Angle of Attack")
+plt.title("Clean Configuration, M=(0.2-0.46), Reynolds=6093800-1316300")
 plt.show()
 
 plt.figure(2)
@@ -172,7 +177,8 @@ plt.plot(Cl2,Cd,"ro")
 plt.plot(Cl2,Cd,"r")
 plt.xlabel("Lift Coefficient Squared")
 plt.ylabel("Drag Coefficient")
-plt.title("Drag Coefficient vs. Lift Coefficient Squared")
+plt.suptitle("Drag Coefficient vs. Lift Coefficient Squared")
+plt.title("Clean Configuration, M=(0.2-0.46), Reynolds=6093800-1316300")
 plt.show()
 
 plt.figure(3)
@@ -181,7 +187,8 @@ plt.plot(alpha,Cd,"bo")
 plt.plot(alpha,Cd,"b")
 plt.xlabel("Angle of attack [deg]")
 plt.ylabel("Drag Coefficient")
-plt.title("Drag Coefficient vs. Angle of Attack")
+plt.suptitle("Drag Coefficient vs. Angle of Attack")
+plt.title("Clean Configuration, M=(0.2-0.46), Reynolds=6093800-1316300")
 plt.show()
 # =============================================================================
 # dy = max(Cd) - min(Cd)
@@ -218,7 +225,8 @@ plt.plot(CdC,Cl,"ko", label="Linearized Cd")
 plt.plot(CdC,Cl,"k")
 plt.xlabel("Drag Coefficient")
 plt.ylabel("Lift Coefficient")
-plt.title("Drag Polar")
+plt.suptitle("Drag Polar")
+plt.title("Clean Configuration, M=(0.2-0.46), Reynolds=6093800-1316300")
 plt.show()
 #for i in range(len(Cd)-1):
 #==============================================================================

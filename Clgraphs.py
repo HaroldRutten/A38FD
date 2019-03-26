@@ -188,20 +188,28 @@ plt.show()
 # dx = max(Cl2)-min(Cl2)
 # slope = dy/dx
 # =============================================================================
-
-dy = max(Cd) - min(Cd)
-dx = max(Cl2) - min(Cl2)
-slope = dy/dx
+dy = []
+for i in range(len(Cd)-1):
+    dy.append(Cd[i+1] - Cd[i])
+dx = []
+for i in range(len(Cd)-1):
+    dx.append(Cl2[i+1] - Cl2[i])
+dY = np.average(dy)
+dX = np.average(dx)
+slope = dY/dX
 
 dyy = max(Cl) - min(Cl)
 dxx = max(alpha) - min(alpha)
 dCl_dalpha = dyy/dxx
 
 e = (1/slope)/(AR*m.pi)
-CD_0 = np.average(Cd[:] - Cl2[:]*slope) 
+CD_0 = []
+for i in range(len(Cd)):
+    CD_0.append( (Cd[i] - Cl2[i]*slope) )
+Cd0 = np.average(CD_0)
 CdC = []
 for i in Cl:
-    CdC.append(CD_0 + (i**2)/(m.pi*S*e))
+    CdC.append(Cd0 + (i**2)/(m.pi*S*e))
     
 plt.figure(4)
 plt.plot(Cd,Cl,"mo", label="Measured Cd")

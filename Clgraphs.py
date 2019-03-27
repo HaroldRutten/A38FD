@@ -228,31 +228,8 @@ plt.ylabel("Lift Coefficient")
 plt.suptitle("Drag Polar")
 plt.title("Clean Configuration, M=(0.2-0.46), Reynolds=6093800-1316300")
 plt.show()
-#for i in range(len(Cd)-1):
-#==============================================================================
 
-# for i in Cd:
-#     if i == 5:
-#         
-#     else:        
-#         dy.append( Cd[Cd.index(i)+1]-Cd[Cd.index(i)])
-#     dx.append( Cl2[Cd.index(i)+1]-Cl2[Cd.index(i)])
-# 
-#==============================================================================
 
-#==============================================================================
-# for i in Cd:
-#     if Cd.index(i) <5:
-#         dy.append(Cd[Cd.index(i)+1] - Cd[Cd.index(i)])
-#         dx.append(Cl2[Cd.index(i)+1] - Cl2[Cd.index(i)])
-#     else: 
-#         break
-# slopes = []
-# for i in dy:
-#     slopes.append(i/(dx[dy.index(i)]))
-# avg = sum(slopes)/len(slopes)
-# 
-#==============================================================================
 
 
 

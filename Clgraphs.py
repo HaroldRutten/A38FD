@@ -23,7 +23,7 @@ gamma = 1.4
 Ws = 60500.
 S = 30. #m^2
 b = 15.911
-AR = (b**2)/30.
+AR = (b**2)/S
 # EXCEL VARIABLES=============================================================================
 
 F_used_lbs = [360.,400.,435.,466.,503.,530.]
@@ -60,7 +60,7 @@ observer_3L = 83.
 observer_3R = 90.5
 Payload = [pilot1,pilot2,coordinator,observer_1L, observer_1R,observer_2L,observer_2R,observer_3L,observer_3R]
 Wp_kg = sum(Payload) #kg
-Wp_kg = 904.79
+#Wp_kg = 904.79
 #============================FUEL==================================================
 
 
